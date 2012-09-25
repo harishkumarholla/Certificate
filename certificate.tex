@@ -1,0 +1,150 @@
+\documentclass[16pt]{scrartcl}
+\usepackage[a4paper,left=1.8cm,right=1.8cm,top=2cm,bottom=2cm,heightrounded]{geometry}
+\usepackage[svgnames]{xcolor}
+\usepackage{pdflscape}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{calligra}
+\usepackage{tgschola}
+\usepackage{fourier-orns}
+\usepackage{graphicx}
+\usepackage{wallpaper}
+\usepackage[normalem]{ulem}
+%\usepackage[charter]{mathdesign}  %fonts
+\usepackage{mathpazo}  %fonts
+\usepackage{microtype}
+\usepackage{frcursive}
+\hyphenpenalty100000
+\usepackage[all]{nowidow}
+%\clubpenalty10000
+%\widowpenalty10000
+%
+\usepackage{background}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+%
+\SetBgScale{1}
+\SetBgAngle{0}
+\SetBgColor{black}
+\SetBgContents{
+\begin{tikzpicture}[overlay,remember picture]
+	    \draw [	dashed,line width=10pt,color=DarkGreen,
+		       %%top color=magenta!10,middle color = blue!10,bottom color = green!10
+	           ,rounded corners=20pt,double=Blue,double distance=10pt
+	          ]
+	          ($ (current page.north west) + (1cm,-1cm) $)
+	          rectangle
+	         ($ (current page.south east) + (-1cm,1cm) $);
+\end{tikzpicture}
+}
+%
+\usepackage{datatool} %% for mail merging
+%
+\def\signature#1#2{\parbox[b]{1in}{\smash{#1}\vskip12pt}
+\hfill \parbox[t]{2.2in}{\shortstack{\vrule width 2.2in height 0.4pt\\\small#2}}}
+\def\sigskip{\vskip0.4in plus 0.1in}
+		\def\beginskip{\vskip0.5875in plus 0.1in}
+% % some colors
+\definecolor{title}{RGB}{180,0,0}
+\definecolor{other}{RGB}{171,0,255}
+\definecolor{name}{RGB}{255,0,0}
+\definecolor{phd}{RGB}{0,0,250}
+%
+\begin{document}
+\sloppy
+\DTLloaddb{names}{namelist.csv}
+%
+\begin{landscape}
+	%\pagecolor{Bisque}
+	%
+	\pagestyle{empty}
+	\DTLforeach{names}{%   %%% these constitute running content
+		\dg=degree, \name=Name,\dgn=Dgn, \sub=subject, \inst=inst, \place=place}{%
+		\linespread{2}\selectfont
+		\TileWallPaper{1\paperwidth}{1\paperheight}{picture/papers/25.jpg}
+		\rotatebox{90}{\CenterWallPaper{0.4}{picture/seal/seal.pdf}}%
+		%---------------------------------------------------
+		\hspace*{-20pt}
+		\noindent
+		\begin{minipage}[l]{1.4in}%
+			%\noindent
+			\includegraphics[width=.85\textwidth]{sx}
+		\end{minipage}%
+		\hfill
+		\begin{minipage}[c]{7.2in}%
+			{\centering
+			{\onehalfspacing
+			{\LARGE\bfseries {\color{other}{\fontfamily{pzc}\selectfont{Department of Questions \& Answers}}}}\\[0.6em]
+			{\LARGE\bfseries {\color{phd}{{\TeX.stackexchange.com}}}}\\[0.3em]%\initfamily
+			{\calligra World wide web} -- {\calligra INFTY\\}}
+			%\vskip0.4em
+			{\large \TeX.Stack Exchange Activities on\\}%
+			{\large\bfseries\color{phd}{Answer the Unanswered}}
+			\par}%
+		\end{minipage}%
+		\hfill
+		\begin{minipage}[r]{1.4in}
+			\reflectbox{\includegraphics[width=1\textwidth]{{duck1}}}
+		\end{minipage}%
+		\vskip1em
+		%
+		\noindent
+		\begin{minipage}[l]{1.4in}
+			\mbox{}%
+		\end{minipage}%
+		\hfill
+		\begin{minipage}[c]{7.2in}
+			{\centering%
+			{\onehalfspacing
+			{\Large\bfseries \color{title}{Certificate of Participation}\par}
+			\vskip0.25em
+			{\color{DeepPink}\Large\decofourleft\quad{\color{blue}\decoone}\quad\decofourright}
+			\par}}
+		\end{minipage}%
+		%
+		\hfill
+		%
+		\begin{minipage}[r]{1.4in}
+			\mbox{}
+		\end{minipage}%
+		\vskip1.8em
+		%
+		{%
+		\doublespacing	
+		This is to certify that\, \uuline{\emph{\large\sffamily\color{name}{{{\color{DarkRed}\fontfamily{frc}\selectfont{\bfseries\dg. \name}}}}}}, {\dgn}  of {\sub}, {\inst}, {\place}
+		has participated in the {\bfseries \color{FireBrick}{Answer the Unanswered Activity}}
+		at  ``\emph{\color{DarkBlue}{\bfseries TeX.stackexchange website}}''
+		organized  by the TeX.stackexhange community, from
+		16\textsuperscript{th} to 27\textsuperscript{th} August, 2012.
+		}
+		
+		\noindent
+		{\singlespacing
+		\vfill
+		\hspace{-40pt}
+		%
+		\begin{minipage}[l]{2.5in}
+			\sigskip \signature{}{\phantom{p}Stefan Kottwitz\phantom{g} \\ Moderator }
+		\end{minipage}%
+		%
+		\hfill
+		%
+		\begin{minipage}[l]{2.25in}
+			\sigskip \signature{}{Joseph Wright \\ Moderator }
+		\end{minipage}%
+		%
+		\hfill
+		%
+		\begin{minipage}[r]{2.25in}
+			\sigskip \signature{}{\phantom{p}Martin Scharrer\phantom{g} \\ Moderator}
+		\end{minipage}
+		%
+		\vfil
+		\pagebreak
+		}
+	}
+%
+\end{landscape}
+%
+\end{document}

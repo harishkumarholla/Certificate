@@ -1,0 +1,23 @@
+\documentclass[10pt,a4paper,parskip]{scrbook}
+\usepackage[T1]{fontenc}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz,latexsym}
+\usepackage{pdflscape}
+\usetikzlibrary{decorations.text}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\usepackage{mathpazo}
+%
+\begin{document}
+%
+\begin{tikzpicture}[scale=2.35,opacity=0.2]
+%\draw [help lines](-1,-1) grid (1,1);
+\draw[color=magenta,ultra thick,fill=violet!30] (0,0) circle (0.85cm);
+\draw [draw=none,rotate=275,postaction={decorate,decoration={text along path,reverse path, text color=DarkBlue,
+text={Answer the Unanswered - TeX.stackexchange Community {\,\,\,\,} },text align={fit to path stretching spaces}}}] (0,0) circle(0.66cm);
+\draw[color=magenta,ultra thick,inner color=blue!20,outer color=Orange!30] (0,0) circle (0.55cm);
+\node[draw=none,rectangle,rounded corners=3pt,inner color=Maroon!30,outer color=Maroon!30,inner sep=1pt,text width=2.05cm,rotate=90,align=center] at (0,0) {\scriptsize\color{DarkRed} Answer the Unanswered 16--27, Aug 2012};
+\end{tikzpicture}
+%
+%\end{landscape}
+\end{document}
